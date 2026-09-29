@@ -15,16 +15,15 @@ pipeline {
             }
         }
 
-        stage('Build APK') {
+        stage('Build Web') {
             steps {
-                bat 'flutter build apk --release'
+                bat 'flutter build web --release'
             }
         }
 
-        stage('Archive APK') {
+        stage('Archive Web') {
             steps {
-                archiveArtifacts artifacts: 'build\\app\\outputs\\flutter-apk\\app-release.apk',
-                    fingerprint: true
+                archiveArtifacts artifacts: 'build/web/**', fingerprint: true
             }
         }
     }
